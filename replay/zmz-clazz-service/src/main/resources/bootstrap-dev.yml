@@ -1,0 +1,53 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 172.168.9.12:8848
+        namespace: fd821f89-fb17-459a-9f2a-eda0c658a6fd
+        group: dev
+#        ip: 172.168.4.96
+#        weight: 0
+      config:
+        server-addr: 172.168.9.12:8848
+        namespace: fd821f89-fb17-459a-9f2a-eda0c658a6fd
+        group: dev
+        # 配置文件格式
+        file-extension: yaml
+        # 共享配置
+        shared-configs:
+          - data-id: globe-config-${spring.cloud.nacos.config.group}.${spring.cloud.nacos.config.file-extension}
+            refresh: true
+            group: dev
+        refresh-enabled: true
+  redis:
+    port: 6379
+    password: cqsgdkj@2023
+    host: 172.168.9.12
+  #数据源基本配置
+  datasource:
+    druid:
+      url: jdbc:mysql://172.168.9.12:3306/sgd-nyzx-zmztest?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      username: root
+      password: cqsgdkj@2023
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      initialSize: 1
+      maxActive: 20
+      maxOpenPreparedStatements: 20
+      maxWait: 6000
+      minEvictableIdleTimeMillis: 300000
+      minIdle: 1
+      poolPreparedStatements: true
+      testOnBorrow: false
+      testOnReturn: false
+      testWhileIdle: true
+      timeBetweenEvictionRunsMillis: 60000
+      validationQuery: select 'x'
+    type: com.alibaba.druid.pool.DruidDataSource
+#指向API地址，非控制台地址
+minio:
+  url: http://${spring.redis.host}:9000
+  accessKey: admin
+  secretKey: cqsgdkj@2023
+  bucketName: nyzx-zhxy
+liteflow:
+  rule-source: liteflow/*.el.xml

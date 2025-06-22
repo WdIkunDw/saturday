@@ -1,0 +1,28 @@
+server:
+  port: 0
+
+spring:
+  application:
+    name: edu-service
+  profiles:
+    active: @spring.profiles.active@
+  main:
+    allow-circular-references: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  cache:
+    type: caffeine
+    caffeine:
+      spec: initialCapacity=128,maximumSize=1024,expireAfterWrite=30m
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #开启sql日志
+  type-handlers-package: com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler
+
+sgd:
+  swagger:
+    title: 商嘎德-南渝中学-智慧教务-Swagger3接口文档
+    description: 商嘎德-南渝中学-智慧教务
+    name: 商嘎德-南渝中学-智慧教务
