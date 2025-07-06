@@ -17,6 +17,7 @@
     <module>student-past</module>
     <module>semester</module>
       <module>lesson</module>
+      <module>user</module>
   </modules>
 
   <distributionManagement>

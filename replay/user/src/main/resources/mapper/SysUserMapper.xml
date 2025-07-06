@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.user.mapper.SysUserMapper">
+    <sql id="Base_Column_List">
+        id, type, account_no, user_name, id_card, avatar, phone, password, status, 
+        has_fix_init_psw, wx_open_id, union_id, grade_types, encrypt, deleted, 
+        update_time, create_time
+    </sql>
+
+    <select id="selectByAccountNo" resultType="com.user.entity.SysUser">
+        SELECT 
+        <include refid="Base_Column_List"/>
+        FROM sys_user
+        WHERE account_no = #{accountNo}
+        AND deleted = 0
+    </select>
+
+    <select id="selectByPhone" resultType="com.user.entity.SysUser">
+        SELECT 
+        <include refid="Base_Column_List"/>
+        FROM sys_user
+        WHERE phone = #{phone}
+        AND deleted = 0
+    </select>
+
+    <insert id="insert" parameterType="com.user.entity.SysUser">
+        INSERT INTO sys_user (
+            id, type, account_no, user_name, id_card, avatar, phone, password,
+            status, has_fix_init_psw, wx_open_id, union_id, grade_types, 
+            encrypt, deleted, update_time, create_time
+        )
+        VALUES (
+            #{id}, #{type}, #{accountNo}, #{userName}, #{idCard}, #{avatar},
+            #{phone}, #{password}, #{status}, #{hasFixInitPsw}, #{wxOpenId},
+            #{unionId}, #{gradeTypes}, #{encrypt}, #{deleted}, #{updateTime},
+            #{createTime}
+        )
+    </insert>
+
+    <update id="updateById" parameterType="com.user.entity.SysUser">
+        UPDATE sys_user
+        <set>
+            <if test="type != null">type = #{type},</if>
+            <if test="accountNo != null">account_no = #{accountNo},</if>
+            <if test="userName != null">user_name = #{userName},</if>
+            <if test="idCard != null">id_card = #{idCard},</if>
+            <if test="avatar != null">avatar = #{avatar},</if>
+            <if test="phone != null">phone = #{phone},</if>
+            <if test="password != null">password = #{password},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="hasFixInitPsw != null">has_fix_init_psw = #{hasFixInitPsw},</if>
+            <if test="wxOpenId != null">wx_open_id = #{wxOpenId},</if>
+            <if test="unionId != null">union_id = #{unionId},</if>
+            <if test="gradeTypes != null">grade_types = #{gradeTypes},</if>
+            <if test="encrypt != null">encrypt = #{encrypt},</if>
+            <if test="deleted != null">deleted = #{deleted},</if>
+            update_time = #{updateTime}
+        </set>
+        WHERE id = #{id}
+    </update>
+</mapper> 

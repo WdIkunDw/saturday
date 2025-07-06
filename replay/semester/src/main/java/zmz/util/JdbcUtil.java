@@ -3,7 +3,7 @@ package zmz.util;
 import java.sql.*;
 
 public class JdbcUtil {
-    private static final String URL = "jdbc:mysql://localhost:3306/?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=false";
+    private static final String URL = "jdbc:mysql://localhost:3306/sgd_nyzx_semester?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=false";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
 

@@ -11,7 +11,7 @@ public class JdbcUtil {
     /**
      * 数据库连接URL
      */
-    private static final String URL = "jdbc:mysql://localhost:3306/your_database?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=false";
+    private static final String URL = "jdbc:mysql://localhost:3306/sgd_nyzx_student?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=false";
     
     /**
      * 数据库用户名
